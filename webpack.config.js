@@ -7,7 +7,7 @@ const path = require("path");
 const PATHS = {
   src: path.join(__dirname, "src/scripts"),
   dist: path.join(__dirname, "dist"),
-  publicPath: "/dist/",
+  publicPath: path.join(__dirname, "dist"),
 };
 
 const common = {
@@ -16,7 +16,7 @@ const common = {
   },
   output: {
     path: PATHS.dist,
-    publicPath: PATHS.publicPath,
+    publicPath: "/dist/",
     filename: "[name].bundle.js",
   },
   module: {
@@ -52,8 +52,8 @@ const devConf = {
   devtool: "inline-source-map",
   devServer: {
     contentBase: "dist/",
+    noInfo: true,
     inline: true,
-    hot: true,
   }
 };
 

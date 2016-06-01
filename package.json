@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build && webpack-dev-server",
+    "start": "npm run build && webpack-dev-server --hot",
     "build": "webpack"
   },
   "author": "",
