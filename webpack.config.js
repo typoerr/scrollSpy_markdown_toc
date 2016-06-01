@@ -5,9 +5,8 @@ const CopyPlugin = require("copy-webpack-plugin");
 const WebpackNotifierPlugin = require("webpack-notifier");
 const path = require("path");
 const PATHS = {
-  src: path.join(__dirname, "src/scripts"),
+  src: path.join(__dirname, "scripts"),
   dist: path.join(__dirname, "dist"),
-  publicPath: path.join(__dirname, "dist"),
 };
 
 const common = {
@@ -43,7 +42,7 @@ const common = {
   plugins: [
     new WebpackNotifierPlugin({ title: "Webpack" }),
     new CopyPlugin([
-      { from: "src/index.html" },
+      { from: "./index.html" },
     ]),
   ]
 };
@@ -54,7 +53,12 @@ const devConf = {
     contentBase: "dist/",
     noInfo: true,
     inline: true,
-  }
+  },
+  plugins: [
+    new CopyPlugin([
+      { from: "./index.html" },
+    ]),
+  ]
 };
 
 
