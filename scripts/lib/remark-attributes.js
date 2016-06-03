@@ -1,6 +1,5 @@
 // 参考: https://github.com/wooorm/remark-slug/blob/master/index.js
 // TODO: headingだけなので改良したい
-// TOOD: github-slugでidの重複を解消
 
 var visit = require("unist-util-visit");
 /**
