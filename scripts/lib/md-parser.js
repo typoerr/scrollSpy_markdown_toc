@@ -1,13 +1,16 @@
 import remark from "remark";
-import remarkHTML from "remark-html";
+import html from "remark-html";
+import hljs from "remark-highlight.js";
+import attrAtcher from "./remark-attributes.js";
 
 export default class Markdown {
   /**
   * @param {string} markdown
   */
-  constructor(markdown) {
+  constructor(markdown, headingAttrs) {
     this.raw = markdown;
     this.ast = remark.parse(markdown, this._parseOption);
+    this.headingAttrs = {attrs: headingAttrs};
     this._parseOption = {
       breaks: true,
       setext: true,
@@ -43,6 +46,7 @@ export default class Markdown {
    * @returns html
    */
   toHTML() {
-    return remark.use(remarkHTML).process(this.raw, this._parseOption);
+    return remark.use(attrAtcher, this.headingAttrs)
+      .use([html, hljs]).process(this.raw, this._parseOption);
   }
 }
