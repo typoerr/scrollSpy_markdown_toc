@@ -1,28 +1,15 @@
 <template lang="jade">
-.app {{count}}
-p {{message}}
-p hello Vue.js
+.app
+  ul
+    li(v-for="h in headingList") {{h}}
+  div {{{content}}}
 </template>
 
 <style scoped>
 .app {
-  color: red;
+  padding: 20px;
 }
 </style>
 
-<script>
-export default {
-  data: function () {
-    return {
-      message: "hello world!!!",
-      count: 50,
-    }
-  },
-
-  ready() {
-    setInterval(() => {
-      this.count++
-    }, 1000)
-  }
-}
+<script src="./AppSource.js">
 </script>
