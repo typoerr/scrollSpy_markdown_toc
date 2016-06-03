@@ -1,17 +1,12 @@
-# vue-loaderを使ったときのサンプル環境
+# scrollSpy markdown toc
 
-[Introduction | Introduction](http://vue-loader.vuejs.org/en/index.html)
+Vue.jsをつかったScrollSpyのサンプル実装
 
-## 備忘録・感想
+実際につくる場合にはtocとmarkdownのview、wrapperコンポーネントで別けてeventを親でハンドリングするのがコンポーネント設計的にはよいと思う。
 
-### 単一ファイルコンポーネント
+Vue.js 1.xだと動的にテンプレートを生成できないので、markdownからhtmlにparseしてぶっ込んでいる。2.0から`render`メソッドが加わるのでASTからそのままテンプレートを生成できそう。
 
-手軽にjadeやCSS moduleを使ったscoped CSS環境を構築出来て良い。
+ScrollSpyのサンプル実装をいくつか見たが、だいたいidでお互いを参照している。その場合idを一意にするために[github-slugger: Generate a slug just like GitHub does for markdown headings.](https://github.com/Flet/github-slugger)とか使うのが良さそう。今回は配列のindexで実装できたので、一意性を確保する必要はなかった。
 
-VSCodeで書く場合シンタックスはpluginでサポートされているが、Editorの機能が死ぬのでJavaScriptだけは別で書いてsrc属性で読み込むのがよさそう。またはVue-loader(単一ファイル)を諦めてそれぞれのloaderで環境をつくるか。
 
-### webpack-dev-serverとHMR
 
-webpackのHMRを使う場合はdevServerの設定をwebpack.config.jsではなくコマンドで`--hot`を付けないと動作しない。また動作も不安定でうまく更新されない場合がある。
-
-サンプルではsetIntervalのcountが不規則になる。またApp.vueのstateを更新しても反映されない等。反映される挙動がつかめずこだわりもないのでHMRは諦めても良いかもしれない。
