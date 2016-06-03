@@ -2,10 +2,11 @@
 .app
   div.sction.toc
     ul
-      li(li v-for="(index, tocItem) in headingList" track-by="$index")
-        div(class="tocItem" @click="onTocItemClick(index)"
-         v-bind:class="[index == currentIndex ?    'current': '']")
+      li(li v-for="(index, tocItem) in headingList" track-by="$index").
+        <div class="tocItem" @click="onTocItemClick(index)" v-bind:class="[index == currentIndex ?    'current': '']">
           {{tocItem}}
+        </div>
+
   div.section.content
     div {{{content}}}
 </template>
