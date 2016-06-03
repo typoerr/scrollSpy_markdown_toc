@@ -3,3 +3,5 @@ jsconfig.json
 /typings/
 typings.json
 /docs
+.vscode
+sample.md
